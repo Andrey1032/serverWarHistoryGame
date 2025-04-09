@@ -2,13 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from './common/pipes/validation.pipes';
+import cors from 'cors';
 
 async function bootstrap() {
   const port = process.env.PORT || 7000;
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    allowedHeaders: ['content-type'],
+    allowedHeaders: '*',
     origin: 'http://localhost:3000',
     credentials: true,
   });
